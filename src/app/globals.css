@@ -2,9 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import modern sans-serif fonts with optimized loading */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap&display=swap');
+
+/* Font display strategy for better performance */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300 800;
+  font-display: swap; /* Ensures text remains visible during font loading */
+  src: local('Inter');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: local('Montserrat');
+}
+
 :root {
+  /* Base colors */
   --background: #ffffff;
   --foreground: #171717;
+  
+  /* Color psychology variables */
+  --color-urgency: #e11d48; /* Red for urgency (CTA buttons) */
+  --color-trust: #1e40af;   /* Blue for trust (brand elements) */
+  --color-security: #16a34a; /* Green for security (checkmarks, success) */
+  
+  /* Typography variables */
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Inter', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,5 +47,40 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+/* Apply color psychology to common elements */
+.text-urgency {
+  color: var(--color-urgency);
+}
+
+.text-trust {
+  color: var(--color-trust);
+}
+
+.text-security {
+  color: var(--color-security);
+}
+
+.bg-urgency {
+  background-color: var(--color-urgency);
+}
+
+.bg-trust {
+  background-color: var(--color-trust);
+}
+
+.bg-security {
+  background-color: var(--color-security);
 }
