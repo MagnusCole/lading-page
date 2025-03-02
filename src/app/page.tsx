@@ -46,7 +46,7 @@ export default function Home() {
             
             {/* Main Content - Optimized for Mobile */}
             <section className="text-center mb-6 sm:mb-8 lg:mb-10 space-y-4 sm:space-y-5 lg:space-y-6" aria-labelledby="main-title">
-              <h2 id="main-title" className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 sm:mb-6 lg:mb-8 leading-tight text-white">CONSIGUE MÁS CLIENTES SIN GASTAR EN ADS</h2>
+              <h2 id="main-title" className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-4 sm:mb-6 lg:mb-8 leading-relaxed text-white">CONSIGUE MÁS CLIENTES SIN GASTAR EN ADS</h2>
               <p className="text-lg sm:text-xl lg:text-2xl mb-4 sm:mb-6 lg:mb-8 text-blue-100">Automatizamos tu captación de leads para que <strong>solo cierres ventas</strong>.</p>
               
               {/* Compact bullet points */}
@@ -77,34 +77,39 @@ export default function Home() {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="Escribe tu nombre completo"
+                  placeholder="Tu nombre aquí"
                   required
-                  className="w-full p-3 sm:p-4 rounded-md bg-white/10 border border-blue-500/50 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white placeholder-white/50 text-base sm:text-lg"
+                  className="w-full p-4 sm:p-5 rounded-md bg-white/10 border border-blue-500/50 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white placeholder-white/50 text-base sm:text-lg"
                   aria-required="true"
                 />
               </div>
               <div className="mb-5 lg:mb-6">
                 <label htmlFor="whatsapp" className="block text-xs sm:text-sm font-medium text-blue-300 mb-2">Tu WhatsApp</label>
-                <input
-                  id="whatsapp"
-                  type="tel"
-                  name="whatsapp"
-                  value={formData.whatsapp}
-                  onChange={handleChange}
-                  placeholder="Ej: +51 912 345 678"
-                  required
-                  pattern="[+]?[0-9\s]{9,15}"
-                  className="w-full p-3 sm:p-4 rounded-md bg-white/10 border border-blue-500/50 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white placeholder-white/50 text-base sm:text-lg"
-                  aria-required="true"
-                />
+                <div className="relative">
+                  <input
+                    id="whatsapp"
+                    type="tel"
+                    name="whatsapp"
+                    value={formData.whatsapp}
+                    onChange={handleChange}
+                    placeholder="Ej: +51 912 345 678"
+                    required
+                    pattern="[+]?[0-9\s]{9,15}"
+                    className="w-full p-4 sm:p-5 pl-10 rounded-md bg-white/10 border border-blue-500/50 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white placeholder-white/50 text-base sm:text-lg"
+                    aria-required="true"
+                  />
+                </div>
               </div>
-              <button 
-                type="submit" 
-                className="w-full py-4 px-6 bg-urgency hover:bg-red-700 text-white text-lg sm:text-xl font-bold rounded-md transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] mt-4"
-                aria-label="Solicitar información"
-              >
-                QUIERO CLIENTES AHORA
-              </button>
+              <div className="space-y-3">
+                <button 
+                  type="submit" 
+                  className="w-full py-4 px-6 bg-urgency hover:bg-red-700 text-white text-lg sm:text-xl font-bold rounded-md transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] border-2 border-urgency/30 uppercase tracking-wide"
+                  aria-label="Solicitar información"
+                >
+                  QUIERO CLIENTES AHORA
+                </button>
+                <p className="text-sm text-center text-blue-200">Sin compromiso. No compartimos tu información.</p>
+              </div>
             </form>
           </section>
         ) : (

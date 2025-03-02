@@ -1,5 +1,6 @@
 'use client';
 import { useEffect } from 'react';
+import { patchUseLayoutEffect } from '../utils/useIsomorphicLayoutEffect';
 
 /**
  * This component patches React's useLayoutEffect to prevent SSR warnings
@@ -10,22 +11,11 @@ export function LayoutEffectFix() {
     // Only run on the client side
     if (typeof window === 'undefined') return;
 
-    // Access the React object from the window
-    const React = (window as any).React;
-    if (!React) return; // Safety check
-
-    // Save the original useLayoutEffect
-    const originalUseLayoutEffect = React.useLayoutEffect;
-
-    // Override useLayoutEffect to use useEffect during SSR
-    React.useLayoutEffect = typeof window !== 'undefined' 
-      ? originalUseLayoutEffect 
-      : React.useEffect;
-
+    // Apply the global patch to React's useLayoutEffect
+    const cleanup = patchUseLayoutEffect();
+    
     // Cleanup function to restore original when component unmounts
-    return () => {
-      React.useLayoutEffect = originalUseLayoutEffect;
-    };
+    return cleanup;
   }, []);
 
   // This component doesn't render anything
