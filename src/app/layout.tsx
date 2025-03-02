@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { LayoutEffectFix } from "../components/LayoutEffectFix";
 
 // We're now using custom font imports from globals.css instead of Next.js font loader
 // This allows us to use the typography principles with modern sans-serif fonts
@@ -47,6 +48,7 @@ export default function RootLayout({
         className="antialiased"
         role="document"
       >
+        <LayoutEffectFix />
         {children}
       </body>
     </html>
